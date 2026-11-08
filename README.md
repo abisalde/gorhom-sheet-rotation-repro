@@ -5,6 +5,15 @@ Minimal reproduction for `@gorhom/bottom-sheet` 5.2.14: when a device rotates wh
 from the previous orientation. The footer ends up off-screen (landscape → portrait) or
 floating above the bottom edge (portrait → landscape).
 
+## Video
+
+[`media/rotation-bug.mp4`](media/rotation-bug.mp4) (iPhone 17 Pro simulator, stock 5.2.14):
+
+1. Rotate to landscape and open the sheet.
+2. Rotate to portrait: `containerHeight 874` instead of 812, footer cut off at the bottom edge.
+3. Close and reopen in portrait: `containerHeight 812`, footer visible.
+4. Rotate to landscape: `containerHeight 340` instead of 402, footer floats above the bottom.
+
 ## Versions
 
 | Package | Version |
