@@ -9,9 +9,8 @@ import {
 import { useRef, useState } from 'react';
 import { Pressable, StyleSheet, Text, useWindowDimensions, View } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import { useAnimatedReaction } from 'react-native-reanimated';
+import { runOnJS, useAnimatedReaction } from 'react-native-reanimated';
 import { SafeAreaProvider, useSafeAreaInsets } from 'react-native-safe-area-context';
-import { scheduleOnRN } from 'react-native-worklets';
 
 const SNAP_POINTS = ['100%'];
 const ROWS = Array.from({ length: 30 }, (_, index) => `Row ${index + 1}`);
@@ -51,7 +50,7 @@ function SheetLayoutReadout() {
     },
     (next, previous) => {
       if (next !== previous) {
-        scheduleOnRN(setReadout, next);
+        runOnJS(setReadout)(next);
       }
     },
   );

@@ -36,6 +36,13 @@ npx expo start
 Open it in Expo Go on an iPhone with a notch or Dynamic Island (reproduced on an iPhone 17 Pro
 simulator, iOS 26.4). Rotation lock must be off.
 
+Snack: https://snack.expo.dev/o9tUM4R_D2_6QhVFzqEzR (SDK 55, also reproduces). Snack cannot
+install `@gorhom/bottom-sheet` >= 5.1.8 from npm (its packager rejects the Reanimated peer range
+`>=3.16.0 || >=4.0.0-`), so the Snack includes the unmodified 5.2.14 `src` as local files.
+
+The order of the size and inset updates is timing dependent: now and then the first rotation after
+launch comes out right. Repeating the steps reproduces it.
+
 ## Steps
 
 The sheet shows `useBottomSheetInternal()` values so the wrong height is visible.
